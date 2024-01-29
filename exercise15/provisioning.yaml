@@ -1,0 +1,11 @@
+---
+- name: Provisioning Servers
+  hosts: all
+  become: yes
+  roles:
+    - role: post-install
+      vars: 
+      ntp0: 0.ca.pool.ntp.org
+      ntp1: 1.ca.pool.ntp.org
+      ntp2: 2.ca.pool.ntp.org
+      ntp3: 3.ca.pool.ntp.org

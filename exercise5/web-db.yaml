@@ -1,0 +1,32 @@
+---
+
+- name: WebServer Setup
+  hosts: webservers
+  become: yes
+  tasks:
+
+  - name: Install Httpd
+    yum:
+      name: httpd
+      state: present
+
+  - name: Enable and Start Httpd Service
+    systemd:
+      name: httpd
+      state: started
+      enabled: yes
+      
+- name: DBServer Setup
+  hosts: dbservers
+  become: yes
+  tasks:
+
+  - name: Install MariaDB
+    yum:
+      name: mariadb-server
+      state: present
+  - name: Enable and Start MySQL Service
+    systemd:
+      name: mariadb
+      state: started
+      enabled: yes

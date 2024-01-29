@@ -1,0 +1,19 @@
+---
+- name: Understanding precedence of ansible variables
+  hosts: all
+  gather_facts: False
+  become: yes
+    #vars:
+    #USRNM: playuser
+    #COMM: Variable from playbook
+
+  tasks:
+  - name: create user
+    user:
+      name: "{{USRNM}}"
+      comment: "{{COMM}}"
+    register: usrout
+  - debug:
+      var: usrout.name
+  - debug:
+      var: usrout.comment
